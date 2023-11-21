@@ -150,4 +150,69 @@ window.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', showModalByScroll);
 
+    // Cards
+
+    class MenuCard {
+        constructor(src, alt, title, descr, price, parentSelector) {
+            this.src = src;
+            this.alt = alt;
+            this.title = title;
+            this.descr = descr;
+            this.price = price;
+            this.parent = document.querySelector(parentSelector);
+            this.exchange = 0.9;
+            this.changeToEUR();
+        }
+
+        changeToEUR() {
+            this.price = Math.floor(this.price * this.exchange);
+        }
+
+        render() {
+            const element = document.createElement('div');
+            element.innerHTML = `
+                <div class="menu__item">
+                    <img src=${this.src} alt=${this.alt}>
+                    <h3 class="menu__item-subtitle">${this.title}</h3>
+                    <div class="menu__item-descr">${this.descr}</div>
+                    <div class="menu__item-divider"></div>
+                    <div class="menu__item-price">
+                        <div class="menu__item-cost">Price:</div>
+                        <div class="menu__item-total"><span>${this.price}</span>EUR/day</div>
+                    </div>
+                </div>
+            `;
+
+            this.parent.append(element);
+        }
+
+    }
+
+    new MenuCard(
+        "img/tabs/vegy.jpg",
+        "vegy",
+        "Fitness",
+        '"Fitness" menu is a new approach to cooking: more fresh vegetables and fruits. For people who are interested in sports; active and healthy. This is a completely new product with the best price and high quality!',
+        15,
+        ".menu .container"
+    ).render();
+
+    new MenuCard(
+        "img/tabs/post.jpg",
+        "lenten",
+        "Lenten",
+        'Our special “Lenten menu” is a careful selection of ingredients: a complete absence of animal products. Complete harmony with yourself and nature in every element! Everything will be Om!',
+        20,
+        ".menu .container"
+    ).render();
+
+    new MenuCard(
+        "img/tabs/elite.jpg",
+        "elite",
+        "Premium",
+        '“Premium” menu - we use not only beautiful packaging design, but also high-quality execution of dishes. Red fish, seafood, fruits - a restaurant menu without going to a restaurant!',
+        24,
+        ".menu .container"
+    ).render();
+
 });
