@@ -226,7 +226,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const forms = document.querySelectorAll('form');
     const message = {
-        loading: 'img/form/spinner.svg',
+        loading: '../img/form/spinner.svg',
         success: 'Thanks! We will contact you soon',
         failure: 'Something went wrong...'
     };
@@ -254,7 +254,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 object[key] = value;
             });
 
-            fetch('server.php', {
+            fetch('../server.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
