@@ -1,0 +1,28 @@
+{
+  "menu": [
+    {
+      "img": "img/tabs/vegy.jpg",
+      "altimg": "vegy",
+      "title": "Fitness",
+      "descr": "Fitness menu is a new approach to cooking: more fresh vegetables and fruits. For people who are interested in sports; active and healthy. This is a completely new product with the best price and high quality!",
+      "price": 15
+    },
+    {
+      "img": "img/tabs/post.jpg",
+      "altimg": "lenten",
+      "title": "Lenten",
+      "descr": "Our special Lenten menu is a careful selection of ingredients: a complete absence of animal products. Complete harmony with yourself and nature in every element! Everything will be Om!",
+      "price": 20
+    },
+    {
+      "img": "img/tabs/elite.jpg",
+      "altimg": "elite",
+      "title": "Premium",
+      "descr": "Premium menu - we use not only beautiful packaging design, but also high-quality execution of dishes. Red fish, seafood, fruits - a restaurant menu without going to a restaurant!",
+      "price": 24
+    }
+  ],
+  "requests": [
+      
+  ]
+}
