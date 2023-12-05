@@ -106,26 +106,31 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // Modal
 
-    const modal = document.querySelector('.modal'),
-          modalTrigger = document.querySelectorAll('[data-modal]');
-
-    function openModal() {
-        modal.classList.toggle('show');
-        document.body.style.overflow = 'hidden';
-        clearInterval(modalTimerId);
-    }
-
-    function closeModal() {
-        modal.classList.toggle('show');
-        document.body.style.overflow = '';
-    }
+    const modalTrigger = document.querySelectorAll('[data-modal]'),
+        modal = document.querySelector('.modal'),
+        modalCloseBtn = document.querySelector('[data-close]');
 
     modalTrigger.forEach(btn => {
         btn.addEventListener('click', openModal);
     });
 
+    function closeModal() {
+        modal.classList.add('hide');
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+    }
+
+    function openModal() {
+        modal.classList.add('show');
+        modal.classList.remove('hide');
+        document.body.style.overflow = 'hidden';
+        clearInterval(modalTimerId);
+    }
+
+    modalCloseBtn.addEventListener('click', closeModal);
+
     modal.addEventListener('click', (e) => {
-        if (e.target === modal || e.target.getAttribute('data-close') === '') {
+        if (e.target === modal) {
             closeModal();
         }
     });
@@ -136,15 +141,14 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    const modalTimerId = setTimeout(openModal, 50000);
+    const modalTimerId = setTimeout(openModal, 300000);
 
     function showModalByScroll() {
-        if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight -1) {
+        if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight) {
             openModal();
             window.removeEventListener('scroll', showModalByScroll);
         }
     }
-
     window.addEventListener('scroll', showModalByScroll);
 
     // Cards
@@ -226,7 +230,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const forms = document.querySelectorAll('form');
     const message = {
-        loading: '../img/form/spinner.svg',
+        loading: './img/form/spinner.svg',
         success: 'Thanks! We will contact you soon',
         failure: 'Something went wrong...'
     };
@@ -254,7 +258,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 object[key] = value;
             });
 
-            fetch('../server.php', {
+            fetch('./server.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -282,7 +286,7 @@ window.addEventListener('DOMContentLoaded', () => {
         thanksModal.classList.add('modal__dialog');
         thanksModal.innerHTML = `
             <div class="modal__content">
-                <div class="modal__close" data-close>×</div>
+                <div class="modal__close" data-close>&times;</div>
                 <div class="modal__title">${message}</div>
             </div>
         `;
