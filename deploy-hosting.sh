@@ -30,5 +30,5 @@ rsync \
 	--exclude=scss \
 	--progress \
 	$DRY \
-	anastasia-hosting:html/anastasia.tynq.net/food/
+	anastasia-hosting:html/anastasia.tynq.net/food-test/
 
